@@ -1,10 +1,11 @@
 <template>
   <div>
     <ul>
-        <li v-for="item in itemsList" v-bind:key="item.name" v-on:click="item.show = !item.show">
+        <li v-for="item in itemsList" v-bind:key="item.name" >
 
-            <h2>{{item.name}}</h2>
+            <h2 v-on:click="item.show = !item.show">{{item.name}}</h2>
             <img v-bind:src="item.image" v-show="item.show"/>
+            <buttonComponent></buttonComponent>
                 
                 
             
@@ -15,8 +16,8 @@
 
 
 <script>
+import ButtonComponent from './ButtonComponent.vue'
 export default {
-  
   data(){
     return{
         itemsList: [{name:'Eggs',image:'./assets/eggs.jpg',show:false},
@@ -26,6 +27,9 @@ export default {
                     {name:'Milk',image:'/assets/milk.jfif',show:false},
                     {name:'Juice',image:'/assets/juice.jfif',show:false}]
         }
+  },
+  components:{
+    'buttonComponent':ButtonComponent
   }
 }
 </script>
@@ -65,5 +69,9 @@ li{
     padding: 10px;
     border: 1px solid #222;
     margin: 10px;
+}
+img{
+  width:100px;
+  height:100px;
 }
 </style>
